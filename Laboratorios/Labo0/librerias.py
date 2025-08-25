@@ -176,6 +176,9 @@ def matrizVandermonde(v):
     res = np.array(res)
     return res
 
+def numeroAureo(n):
+    return sucesionFibo(n + 1)/sucesionFibo(n)
+
 def matrizFibonacci(n):
         A = matrizNulaV2(n,n)
         i = 0
@@ -376,7 +379,7 @@ def sumaM(A, B):
             j+= 1
 
         i += 1
-
+ 
     return res
 
 def matrizNulaV2(m, n):
@@ -434,6 +437,5 @@ def cantDeCol(arr):
 v = np.array([1,2,3])
 m = matrizVandermonde(v)
 
-print(sucesionFibo(6))
-print(matrizHilbert(2))
+print(1/sucesionFibo(2))
 
