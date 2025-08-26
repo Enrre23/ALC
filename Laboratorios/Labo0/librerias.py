@@ -1,83 +1,83 @@
 import numpy as np
-def esCuadrada(arr):
+def esCuadrada(A):    #Esta bien
     res = False
 
-    if(cantDeCol(arr) == cantDeFilas(arr)):
+    if(cantDeCol(A) == cantDeFilas(A)):
         res = True
 
     return res
 
-def triangSup(arr):
+def triangSup(A):
 
-    if(cantDeCol(arr) == 1 and cantDeFilas(arr) == 1):
-        return arr
+    if(cantDeCol(A) == 1 and cantDeFilas(A) == 1):
+        return A
     
     actual = 1
     posicion = 0
-    u = matrizNula(arr)
-    u = np.array(u)
+    U = matrizNula(A)
+    #U = np.array(U)
 
-    while(actual < cantDeCol(arr)):
+    while(actual < cantDeCol(A)):
         j = actual
-        while(j < cantDeCol(arr)):
-            u[posicion][j] = arr[posicion][j]
+        while(j < cantDeCol(A)):
+            U[posicion][j] = A[posicion][j]
             j+= 1
 
         actual += 1
         posicion += 1
 
-    return u
+    return U
 
-def triangInf(arr):
+def triangInf(A):
 
-    if(cantDeCol(arr) == 1 and cantDeFilas(arr) == 1):
-        return arr
+    if(cantDeCol(A) == 1 and cantDeFilas(A) == 1):
+        return A
     
     actual = 0
     posicion = 1
-    res = matrizNula(arr)
-    res = np.array(res)
+    L = matrizNula(A)
+    #res = np.array(res)
 
-    while(actual <= cantDeCol(arr)//2):
+    while(actual <= cantDeCol(A)//2):
         j = 0
         while(j <= actual):
-            res[posicion][j] = arr[posicion][j]
+            L[posicion][j] = A[posicion][j]
             j+= 1
 
         actual += 1
         posicion += 1
 
-    return res
+    return L
 
-def diagonal(arr):
+def diagonal(A):
     i = 0
-    res = matrizNula(arr)
-    res = np.array(res)
+    D = matrizNula(A)
+    #res = np.array(res)
 
-    while(i < cantDeCol(arr)):
-        res[i][i] = arr[i][i]
+    while(i < cantDeCol(A)):
+        D[i][i] = A[i][i]
         i += 1
 
-    return res
+    return D
 
-def traza(arr):
+def traza(A):
     i = 0
     res = 0
-    while(i < cantDeCol(arr)):
-        res += arr[i][i]
+    while(i < cantDeCol(A)):
+        res += A[i][i]
         i += 1
 
     return res
 
-def traspuesta(arr):
+def traspuesta(A):
     i = 0
     t = []
     
-    while(i < cantDeCol(arr)):
+    while(i < cantDeCol(A)):
         t.append([])
         i += 1
 
-    for arreglo in arr:
+    for arreglo in A:
         j = 0
         while(j < arreglo.size):
             t[j].append(arreglo[j])
@@ -87,18 +87,18 @@ def traspuesta(arr):
     return t
 
 
-def esSimetrica(arr):
+def esSimetrica(A):
     res = False
 
-    if(esCuadrada(arr)):
-        trans = traspuesta(arr)
+    if(esCuadrada(A)):
+        trans = traspuesta(A)
         res = True
         i = 0
 
-        while(i < cantDeCol(arr) and res):
+        while(i < cantDeCol(A) and res):
             j = 0
-            while(j < arr[i].size and res):
-                if(arr[i][j] != trans[i][j]):
+            while(j < A[i].size and res):
+                if(A[i][j] != trans[i][j]):
                     res = False
                 j += 1
 
@@ -106,32 +106,34 @@ def esSimetrica(arr):
 
     return res
 
-def caclcularAx(A, x):
+def calcularAx(A, x):
     return productoM(A,x)
 
 def intercambiarFilas(A, i, j):
-    fila_guardada = A[i].copy()
+    fila_guardada = copiar_vector(A[i])  #A[i].copy()
+    print(fila_guardada)
     A[i] = A[j]
     A[j] = fila_guardada
 
 def sumar_fila_multiplo(A, i, j, s):
-    copia = A[j].copy()
+    fila_guardada = copiar_vector(A[j])  #A[j].copy()
     k = 0
 
-    while(k < copia.size):
-        copia[k] = copia[k]*s
+    while(k < fila_guardada.size):
+        fila_guardada[k] = fila_guardada[k]*s
         k += 1
     
     k = 0 
 
     while(k < A[i].size):
-        A[i][k] = A[i][k] + copia[k]
+        A[i][k] = A[i][k] + fila_guardada[k]
         k += 1
     
 
 def esDiagonalmenteDominante(A):
     fila_actual = 0
     res = True
+
     while(fila_actual < cantDeFilas(A) and res):
         valor_diago = absoluto(A[fila_actual][fila_actual])
         acumulador = 0 
@@ -230,7 +232,7 @@ def evaluar_polinomio(i, n):
 
     return res
 
-
+#Funciones auxiliares: 
 def sucesionFibo(n):
 
     if(n == 0):
@@ -252,7 +254,7 @@ def sucesionFibo(n):
     return matriz_fibo[0][0]
 
 def filaPotenciasIesima(v, i):
-    w = v.copy()
+    w = copiar_vector(v)  #v.copy()
     j = 0
     
     while(j < w.size):
@@ -264,7 +266,7 @@ def filaPotenciasIesima(v, i):
 
 def permutacionCiclica(v):
 
-    w = v.copy()
+    w = copiar_vector(v)  #v.copy()
     ultimo = w[w.size - 1]
     guardado = w[0]
     i = 1
@@ -338,8 +340,7 @@ def absoluto(x):
         x = -x
 
     return x
-    
-   
+       
 def productoM(A, B):
      
     res = matrizNulaV2(cantDeFilas(A), cantDeCol(B))
@@ -432,10 +433,43 @@ def cantDeFilas(arr):
 
 def cantDeCol(arr):
     return arr[0].size
+
+def copiar_matriz(M):
+    cant_de_fila = cantDeFilas(M)
+    i = 0
+    res = []
+
+    while(i < cant_de_fila):
+        j = 0
+        fila_nueva = []
+
+        while(j < M[i].size): 
+            fila_nueva.append(M[i][j])
+            j+= 1
+        
+        res.append(fila_nueva)
+        i+= 1
+
     
+    res = np.array(res)
 
-v = np.array([1,2,3])
-m = matrizVandermonde(v)
+    return res
 
-print(1/sucesionFibo(2))
+def copiar_vector(v):
+    res = []
+    i = 0
+
+    while(i < v.size):
+        res.append(v[i])
+        i+= 1
+
+    res = np.array(res)
+    return res
+
+
+v = np.array([[1,2], [2,1]])
+intercambiarFilas(v, 0, 1)
+
+
+
 

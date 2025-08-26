@@ -1,5 +1,5 @@
 from librerias import esCuadrada, triangSup, cantDeCol, triangInf, diagonal, traza, traspuesta
-from librerias import esSimetrica, caclcularAx, productoM, cantDeFilas, intercambiarFilas
+from librerias import esSimetrica, calcularAx, productoM, cantDeFilas, intercambiarFilas
 from librerias import sumar_fila_multiplo, esDiagonalmenteDominante, matrizCirculante, matrizVandermonde
 from librerias import numeroAureo, sucesionFibo, matrizFibonacci, matrizHilbert
 import numpy as np
@@ -101,7 +101,7 @@ def test_es_simetrica():
 def test_calcularAx():
     A = np.array([[5,4],[2,1]])
     x = np.array([[1],[2]])
-    b = productoM(A,x)
+    b = calcularAx(A,x)
     b_esperado = np.array([[13],[4]])
 
     print(b)
