@@ -225,5 +225,7 @@ def test_matriz_hilbert():
     assert m_hilbert[3][2] == 1/8 #43 = 7
     assert m_hilbert[3][3] == 1/9 #44 = 8
 
+
+
 #def test_evaluar_polinomio():
     

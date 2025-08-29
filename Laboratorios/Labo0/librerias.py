@@ -334,6 +334,17 @@ def matriz_identidad(n):
 
     return res
 
+def generar_puntos_equispaciados(n):
+    i = 0  #O(1)
+    res = []  #O(1)
+    
+    while(i < n):                               #O(n)
+        res.append(-1 + (2/(n - 1))*i)  #O(1)
+        i += 1              #O(1)
+
+    return res
+    #Total: O(n)
+
 def absoluto(x):
 
     if(x < 0):
@@ -467,8 +478,8 @@ def copiar_vector(v):
     return res
 
 
-v = np.array([[1,2], [2,1]])
-intercambiarFilas(v, 0, 1)
+
+print(generar_puntos_equispaciados(5))
 
 
 
