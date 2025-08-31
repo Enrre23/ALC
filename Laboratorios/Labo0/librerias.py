@@ -1,4 +1,5 @@
 import numpy as np
+#Ejercicio 1)
 def esCuadrada(A):    #Esta bien
     res = False
 
@@ -7,6 +8,7 @@ def esCuadrada(A):    #Esta bien
 
     return res
 
+#Ejercicio2)
 def triangSup(A):
 
     if(cantDeCol(A) == 1 and cantDeFilas(A) == 1):
@@ -28,6 +30,7 @@ def triangSup(A):
 
     return U
 
+#Ejercicio3)
 def triangInf(A):
 
     if(cantDeCol(A) == 1 and cantDeFilas(A) == 1):
@@ -49,6 +52,8 @@ def triangInf(A):
 
     return L
 
+
+#Ejercicio4)
 def diagonal(A):
     i = 0
     D = matrizNula(A)
@@ -60,6 +65,8 @@ def diagonal(A):
 
     return D
 
+
+#Ejercicio5)
 def traza(A):
     i = 0
     res = 0
@@ -69,6 +76,7 @@ def traza(A):
 
     return res
 
+#Ejercicio6)
 def traspuesta(A):
     i = 0
     t = []
@@ -86,7 +94,7 @@ def traspuesta(A):
     t = np.array(t) 
     return t
 
-
+#Ejercicio7)
 def esSimetrica(A):
     res = False
 
@@ -106,15 +114,18 @@ def esSimetrica(A):
 
     return res
 
+#Ejercicio8)
 def calcularAx(A, x):
     return productoM(A,x)
 
+#Ejercicio9)
 def intercambiarFilas(A, i, j):
     fila_guardada = copiar_vector(A[i])  #A[i].copy()
     print(fila_guardada)
     A[i] = A[j]
     A[j] = fila_guardada
 
+#Ejercicio10)
 def sumar_fila_multiplo(A, i, j, s):
     fila_guardada = copiar_vector(A[j])  #A[j].copy()
     k = 0
@@ -129,7 +140,7 @@ def sumar_fila_multiplo(A, i, j, s):
         A[i][k] = A[i][k] + fila_guardada[k]
         k += 1
     
-
+#Ejercicio11)
 def esDiagonalmenteDominante(A):
     fila_actual = 0
     res = True
@@ -152,6 +163,7 @@ def esDiagonalmenteDominante(A):
 
     return res
 
+#Ejercicio12)
 def matrizCirculante(v):
     permutacion =  v
     res = []
@@ -166,6 +178,7 @@ def matrizCirculante(v):
     res = np.array(res)
     return res
 
+#Ejercicio13)
 def matrizVandermonde(v):
     res = []
     i = 0
@@ -178,8 +191,11 @@ def matrizVandermonde(v):
     res = np.array(res)
     return res
 
+#Ejercicio14)
 def numeroAureo(n):
     return sucesionFibo(n + 1)/sucesionFibo(n)
+
+#Ejercicio15)
 
 def matrizFibonacci(n):
         A = matrizNulaV2(n,n)
@@ -196,7 +212,7 @@ def matrizFibonacci(n):
             
         return A
 
-
+#Ejercicio16)
 def matrizHilbert(n):
         H = matrizNulaV2(n,n)
         i = 0
@@ -212,6 +228,7 @@ def matrizHilbert(n):
             
         return H
 
+#Ejercicio17)
 def evaluar_polinomio(i, n):
     res = 0
 

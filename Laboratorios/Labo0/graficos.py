@@ -8,6 +8,7 @@ b = [1, 2, 3]
 #m: Es la cantidad de puntos que se va a graficar
 def graficar_puntos_poli(n, m):
 
+#Ejercicio16)
     p = generar_puntos_equispaciados(m)
     y = []
 
@@ -43,6 +44,7 @@ def graficar_puntos_poli(n, m):
         plt.plot(p, y)
         plt.show()
 
+#Ejercicio14)
 def graficar_numero_oro(n):
     i = 1
     h = []
