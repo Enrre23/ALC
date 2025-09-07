@@ -68,10 +68,12 @@ def main():
 #if __name__ == "__main__":
 #    main()
 
-#Leer:
-#Para graficar el efecto de f(x,y) = (x/2,y/2) cambien T de main() por np.array([[1/2, 0], [0, 1/2]])
-#Para graficar el efecto de la inversa cambien T por np.array([[2, 0],[0, 2]])
+"""
+Parte del eje. 1)
+Para graficar el efecto de f(x,y) = (x/2,y/2) cambien T de main() por np.array([[1/2, 0], [0, 1/2]])
+Para graficar el efecto de la inversa cambien T por np.array([[2, 0],[0, 2]])
 
+"""
 
 
 """
