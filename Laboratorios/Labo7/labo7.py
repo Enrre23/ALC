@@ -12,10 +12,12 @@ def transiciones_al_azar_continuas(n):
             fila.append(np.random.uniform(0, 1))
             j += 1
 
+        fila_no_nula(fila)
+
         res.append(fila)
         i+= 1
 
-    res = np.array(res, dtype = float)
+    res = np.array(res, dtype=float)
     
     fil_acutal = 0
     while(fil_acutal < res.shape[0]):
@@ -51,15 +53,16 @@ def transiciones_al_azar_uniformes(n,thres):
                 fila.append(1)
             if(num_random > thres):
                 fila.append(0)
-            else:
+            if(num_random == thres):
                 fila.append(num_random)
                 
             j += 1
 
+        fila_no_nula(fila)
         res.append(fila)
         i+= 1
 
-    res = np.array(res)
+    res = np.array(res, dtype= float)
     
     fil_acutal = 0  
     while(fil_acutal < res.shape[0]):
@@ -137,6 +140,18 @@ def multiplica_rala_vector(A,v):
     
     return np.array(res, dtype = float)
     
+def fila_no_nula(f):
+    i = 0
+    es_nula = True
+
+    while(i < len(f) and es_nula):    
+        if(abs(f[i] - 0) >= 1e-15):
+            es_nula = False
+
+        i+= 1
+
+    if(es_nula):
+        f[0] = 1;
 
 
 def traspuesta(A):
@@ -204,4 +219,3 @@ def productoM(A, B):
         i += 1
        
     return res
-
