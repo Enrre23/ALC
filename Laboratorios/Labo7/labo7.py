@@ -15,7 +15,7 @@ def transiciones_al_azar_continuas(n):
         res.append(fila)
         i+= 1
 
-    res = np.array(res)
+    res = np.array(res, dtype = float)
     
     fil_acutal = 0
     while(fil_acutal < res.shape[0]):
